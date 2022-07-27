@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models.proveedor import Proveedor
-
-from .models.category import Category
-
-admin.site.register(Proveedor)
-admin.site.register(Category)
+from authApp.models.Producto import Producto
+from authApp.models.proveedor import Proveedor
+from authApp.models.Categoria import Categoria
 
 # Register your models here.
+admin.site.register(Proveedor)
+admin.site.register(Categoria)
+admin.site.register(Producto)

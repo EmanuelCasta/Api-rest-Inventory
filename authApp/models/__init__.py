@@ -1,2 +1,3 @@
+from .Producto import Producto
 from .proveedor import Proveedor
-from .category import Category
+from .Categoria import Categoria
