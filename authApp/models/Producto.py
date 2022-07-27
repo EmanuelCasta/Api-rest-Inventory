@@ -1,6 +1,6 @@
 from django.db  import models
-from django.db  import Proveedor
-from django.db  import Category
+from .Proveedor import Proveedor
+from .Categoria  import Categoria
 
 class Producto(models.Model):
     idProducto = models.AutoField(primary_key=True)
