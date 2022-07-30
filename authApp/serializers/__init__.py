@@ -1,3 +1,3 @@
-from .CategoriaSerializer import CategoriaSerializer
-from .ProductoSerializer import ProductoSerializer
-from .ProveedorSerializer import ProveedorSerializer
+from .categoriaSerializer import CategoriaSerializer
+from .productoSerializer import ProductoSerializer
+from .proveedorSerializer import ProveedorSerializer

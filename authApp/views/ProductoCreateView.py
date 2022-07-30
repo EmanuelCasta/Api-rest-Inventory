@@ -1,7 +1,7 @@
 from rest_framework import status, views
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from authApp.serializers.ProductoSerializer import ProductoSerializer
+from authApp.serializers.productoSerializer import ProductoSerializer
 
 class ProductoDetailView(views.APIView):
 
@@ -10,5 +10,6 @@ class ProductoDetailView(views.APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
+        #colocar el token de inicios
 
-        return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.validated_data,status=status.HTTP_201_CREATED)

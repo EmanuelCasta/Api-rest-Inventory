@@ -5,4 +5,7 @@ from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
 from authApp.models.Producto import Producto
-from authApp.serializers.ProductoSerializer import ProductoSerializer
+from authApp.serializers.productoSerializer import ProductoSerializer
+
+class ProductoDetailView(generics.RetrieveAPIView):
+    queryset = Producto.objects.all()
