@@ -8,8 +8,8 @@ from authApp.serializers.proveedorSerializer import ProveedorSerializer
 class ProductoSerializer(serializers.ModelSerializer):
     #categoria = CategoriaSerializer()
     #proveedor = ProveedorSerializer()
-    idProveedor_id =  serializers.IntegerField(write_only=True)
-    idCategoria_id=  serializers.IntegerField(write_only=True)
+    Proveedor_id =  serializers.IntegerField(write_only=True)
+    Categoria_id=  serializers.IntegerField(write_only=True)
     #categoria = CategoriaSerializer(read_only=True)
     #proveedor = ProveedorSerializer(read_only=True)
     #idProveedor = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Proveedor.objects.all(), source='idProveedor')
@@ -17,8 +17,8 @@ class ProductoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Producto
-        ordering = ["-idProducto"]
-        fields = ["idProducto","nombre","precio","descripcion","cantidad","idProveedor_id","idCategoria_id"]
+        ordering = ["-Proveedor"]
+        fields = ["Producto_id","nombre","precio","descripcion","cantidad","Proveedor_id","Categoria_id"]
         depth = 1
     
     def create(self, validated_data):
