@@ -6,15 +6,19 @@ from authApp.serializers.categoriaSerializer import CategoriaSerializer
 from authApp.serializers.proveedorSerializer import ProveedorSerializer
 
 class ProductoSerializer(serializers.ModelSerializer):
-    categoria = CategoriaSerializer()
-    proveedor = ProveedorSerializer()
-    idProveedor =  serializers.IntegerField(write_only=True)
-    idCategoria=  serializers.IntegerField(write_only=True)
+    #categoria = CategoriaSerializer()
+    #proveedor = ProveedorSerializer()
+    idProveedor_id =  serializers.IntegerField(write_only=True)
+    idCategoria_id=  serializers.IntegerField(write_only=True)
+    #categoria = CategoriaSerializer(read_only=True)
+    #proveedor = ProveedorSerializer(read_only=True)
+    #idProveedor = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Proveedor.objects.all(), source='idProveedor')
+    #idCategoria = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Categoria.objects.all(), source='idCategoria')
 
     class Meta:
         model = Producto
         ordering = ["-idProducto"]
-        fields = ["idProducto","fechaIngreso","precio","descripcion","cantidad","idProveedor","idCategoria"]
+        fields = ["idProducto","nombre","precio","descripcion","cantidad","idProveedor_id","idCategoria_id"]
         depth = 1
     
     def create(self, validated_data):

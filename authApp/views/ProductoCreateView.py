@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from authApp.serializers.productoSerializer import ProductoSerializer
 
-class ProductoDetailView(views.APIView):
+class ProductoCreateView(views.APIView):
 
     def post(self,request,*arg,**kwargs):
         serializer = ProductoSerializer(data=request.data)

@@ -1,0 +1,2 @@
+from .ProductoCreateView import ProductoCreateView
+from .ProductoDetailView import ProductoDetailView

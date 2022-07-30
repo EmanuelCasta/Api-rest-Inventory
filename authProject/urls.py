@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from authApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('producto/',views.ProductoCreateView.as_view()),
+    path('producto/<int:pk>/',views.ProductoDetailView.as_view()),
 ]
