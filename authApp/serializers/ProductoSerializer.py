@@ -17,7 +17,7 @@ class ProductoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Producto
-        ordering = ["-Proveedor"]
+        ordering = ["-Proveedor_id"]
         fields = ["Producto_id","nombre","precio","descripcion","cantidad","Proveedor_id","Categoria_id"]
         depth = 1
     
