@@ -1,5 +1,5 @@
 from django.db  import models
-from .proveedor import Proveedor
+from .Proveedor import Proveedor
 from .Categoria  import Categoria
 
 class Producto(models.Model):

@@ -1,4 +1,4 @@
 from .Producto import Producto
-from .proveedor import Proveedor
+from .Proveedor import Proveedor
 from .Categoria import Categoria
 from .usuario import Usuario

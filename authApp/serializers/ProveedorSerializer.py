@@ -1,4 +1,4 @@
-from authApp.models.proveedor import Proveedor
+from authApp.models.Proveedor import Proveedor
 from rest_framework import serializers
 
 class ProveedorSerializer(serializers.ModelSerializer):
