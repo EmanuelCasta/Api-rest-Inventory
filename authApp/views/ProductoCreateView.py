@@ -13,3 +13,6 @@ class ProductoCreateView(views.APIView):
         #colocar el token de inicios
 
         return Response(serializer.validated_data,status=status.HTTP_201_CREATED)
+
+
+    
