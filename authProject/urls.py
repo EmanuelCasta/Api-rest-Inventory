@@ -20,5 +20,6 @@ from authApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('producto/',views.ProductoCreateView.as_view()),
+    path('producto/all/',views.ProductoAllView.as_view()),
     path('producto/<int:pk>/',views.ProductoDetailView.as_view()),
 ]
