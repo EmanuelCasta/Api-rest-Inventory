@@ -4,7 +4,9 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from authApp.serializers.ProveedorSerializer import ProveedorSerializer
 
 class ProveedorCreateView (views.APIView):
-    def post(selt, request, *args, **kwargs):
+    
+    def post(self, request, *args, **kwargs):
+        #Proveedor no es autoincrementable
         serializer = ProveedorSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()

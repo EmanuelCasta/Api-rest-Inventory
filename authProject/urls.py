@@ -22,4 +22,6 @@ urlpatterns = [
     path('producto/',views.ProductoCreateView.as_view()),
     path('producto/all/',views.ProductoAllView.as_view()),
     path('producto/<int:pk>/',views.ProductoDetailView.as_view()),
+    path('proveedor/',views.ProveedorCreateView.as_view()),
+    path('proveedor/<int:pk>/',views.ProveedorDetailView.as_view()),
 ]

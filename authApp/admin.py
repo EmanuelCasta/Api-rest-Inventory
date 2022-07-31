@@ -1,6 +1,6 @@
 from django.contrib import admin
 from authApp.models.Producto import Producto
-from authApp.models.Proveedor import Proveedor
+from authApp.models.proveedor import Proveedor
 from authApp.models.Categoria import Categoria
 from authApp.models.usuario import Usuario
 

@@ -4,14 +4,11 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
-from authApp.models.Proveedor import Proveedor
+from authApp.models.proveedor import Proveedor
 from authApp.serializers.ProveedorSerializer import ProveedorSerializer
 
-class ProductoDetailView(generics.RetrieveAPIView):
+class ProveedorDetailView(generics.RetrieveAPIView):
     queryset = Proveedor.objects.all()
-
-
-"""  
     serializer_class = ProveedorSerializer
 
 #metodo obtener
@@ -20,7 +17,7 @@ class ProductoDetailView(generics.RetrieveAPIView):
             proveedor = Proveedor.objects.filter(Proveedor_id = kwargs['pk']).first()
            
             proveedor_serializer = ProveedorSerializer(proveedor)
-            if proveedor_serializer.data["nombre"] != "":
+            if proveedor_serializer.data["NombreProveedor"] != "":
                 return Response(proveedor_serializer.data,status=status.HTTP_200_OK)
        
         return Response({"Error":"No found"},status=status.HTTP_501_NOT_IMPLEMENTED)
@@ -40,4 +37,3 @@ class ProductoDetailView(generics.RetrieveAPIView):
         proveedor.delete()
         return Response({"status": f"{status.HTTP_200_OK}"},status=status.HTTP_200_OK)
 
-"""
