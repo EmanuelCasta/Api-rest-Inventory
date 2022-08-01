@@ -1,6 +1,7 @@
 from django.db  import models
 from .proveedor import Proveedor
 from .Categoria  import Categoria
+from .Empresa  import Empresa
 
 class Producto(models.Model):
     idProducto = models.AutoField(primary_key=True)
@@ -10,4 +11,4 @@ class Producto(models.Model):
     cantidad= models.IntegerField(default=0)
     idProveedor=   models.ForeignKey(Proveedor, related_name='proveedor', on_delete=models.CASCADE)
     idCategoria=   models.ForeignKey(Categoria, related_name='categoria', on_delete=models.CASCADE)
-
+    idEmpresa=   models.ForeignKey(Empresa, related_name='empresa', on_delete=models.CASCADE)
