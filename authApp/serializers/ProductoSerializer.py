@@ -1,9 +1,11 @@
 from authApp.models.Producto import Producto
 from authApp.models.proveedor import Proveedor
 from authApp.models.Categoria import Categoria
+from authApp.models.Empresa import Empresa
 from rest_framework import serializers
 from authApp.serializers.categoriaSerializer import CategoriaSerializer
 from authApp.serializers.ProveedorSerializer import ProveedorSerializer
+from authApp.serializers.EmpresaSerializer import EmpresaSerializer
 
 class ProductoSerializer(serializers.ModelSerializer):
     categoria = CategoriaSerializer(read_only=True)
@@ -18,14 +20,14 @@ class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = ["Producto_id","nombre","precio","descripcion","cantidad","Proveedor_id","Categoria_id","categoria","proveedor"]
-     
-    
+
+
     def create(self, validated_data):
         #proveedorInstance = Proveedor.objects.create(**validated_data)
         #categoriarInstance = Categoria.objects.create(**validated_data)
         productoInstance = Producto.objects.create(**validated_data)
         return productoInstance
-    
+
     def to_representation(self,obj):
         producto = Producto.objects.get(Producto_id=obj.Producto_id)
         categoria =Categoria.objects.get(Categoria_id=obj.Categoria_id)
@@ -44,6 +46,6 @@ class ProductoSerializer(serializers.ModelSerializer):
             'proveedor':{
                 'id':proveedor.Proveedor_id,
                 "nombre":proveedor.NombreProveedor,
-                
+
             }
         }

@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from authApp import views
 
 urlpatterns = [
@@ -24,4 +25,8 @@ urlpatterns = [
     path('producto/<int:pk>/',views.ProductoDetailView.as_view()),
     path('proveedor/',views.ProveedorCreateView.as_view()),
     path('proveedor/<int:pk>/',views.ProveedorDetailView.as_view()),
+    path('login/',TokenObtainPairView.as_view()),
+    path('refresh/',TokenRefreshView.as_view()),
+    path('empresa/',views.EmpresaCreateView.as_view()),
+    path('empresa/<int:pk>/',views.EmpresaDetailView.as_view())
 ]
