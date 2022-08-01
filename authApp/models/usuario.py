@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.auth.hashers import make_password
 
+from .Empresa  import Empresa
+
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None):
         """
@@ -26,12 +28,13 @@ class UserManager(BaseUserManager):
         return user
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
-    Usuario = models.IntegerField(primary_key=True)
+    Usuario_id = models.IntegerField(primary_key=True)
     Username = models.CharField('Username', max_length = 15, unique=True)
     Password = models.CharField('Password', max_length = 256)
     Name = models.CharField('Name', max_length = 30)
     Email = models.EmailField('Email', max_length = 100,unique=True)
-    Cedula = models.CharField('Cedula', max_length = 20)
+    Cedula = models.CharField('Cedula', max_length = 20, default=(0))
+    Empresa = models.ForeignKey(Empresa, related_name='empresa_id', on_delete=models.CASCADE, default=(1))
 
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
@@ -39,4 +42,4 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         super().save(**kwargs)
 
     objects = UserManager()
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'Username'

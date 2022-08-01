@@ -1,6 +1,6 @@
 from curses.ascii import US
 from rest_framework import serializers
-from authApp.models.Usuario import Usuario
+from authApp.models.usuario import Usuario
 from authApp.models.Empresa import Empresa
 from authApp.serializers.EmpresaSerializer import EmpresaSerializer
 
@@ -8,7 +8,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
     empresa = EmpresaSerializer()
     class Meta:
         model = Usuario
-        fields = ['idUsuario','Username','Password','Name','Email','empresa']
+        fields = ['Usuario_id','Username','Password','Name','Email','empresa']
 
     def create(self, validated_data):
         empresatData = validated_data.pop('empresa')
