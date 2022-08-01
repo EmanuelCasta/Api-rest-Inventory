@@ -50,3 +50,6 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+# ignore env folder
+/env/
