@@ -18,7 +18,6 @@ class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = ["Producto_id","nombre","precio","descripcion","cantidad","Proveedor_id","Categoria_id","categoria","proveedor"]
-     
     
     def create(self, validated_data):
         #proveedorInstance = Proveedor.objects.create(**validated_data)
