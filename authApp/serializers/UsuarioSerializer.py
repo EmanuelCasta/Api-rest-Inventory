@@ -22,7 +22,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
         empresa = Empresa.objects.get(Empresa_id=obj.Empresa_id)
         return {
             'id':user.id,
-            'Username':user.Username,
+            'username':user.Username,
             'name':user.Name,
             'email':user.Email,
             'empresa':{
