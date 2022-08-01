@@ -1,9 +1,11 @@
+from lib2to3.pgen2 import token
+from urllib import request
 from rest_framework import status, views
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from authApp.serializers.EmpresaSerializer import EmpresaSerializer
 
-class EmpresaDetailView(views.APIView):
+class EmpresaCreateView(views.APIView):
 
     def post(self,request,*arg,**kwargs):
         serializer = EmpresaSerializer(data=request.data)
