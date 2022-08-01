@@ -4,4 +4,4 @@ from rest_framework import serializers
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empresa
-        fields = ["idEmpresa","NombreEmpresa","NIT"]
+        fields = ["Empresa_id","NombreEmpresa","NIT"]

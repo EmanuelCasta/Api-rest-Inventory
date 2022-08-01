@@ -1,32 +1,33 @@
 from curses.ascii import US
 from rest_framework import serializers
-from authApp.models.Usuario import Usuario
+from authApp.models.usuario import Usuario
 from authApp.models.Empresa import Empresa
 from authApp.serializers.EmpresaSerializer import EmpresaSerializer
+
 
 class UsuarioSerializer(serializers.ModelSerializer):
     empresa = EmpresaSerializer()
     class Meta:
         model = Usuario
-        fields = ['idUsuario','Username','Password','Name','Email','empresa']
+        fields = ['id','Username','password','Name','Email','empresa']
 
     def create(self, validated_data):
-        empresatData = validated_data.pop('empresa')
+        empresaData = validated_data.pop('empresa')
         userInstance = Usuario.objects.create(**validated_data)
-        Empresa.objects.create(user=userInstance, **empresatData)
+        Empresa.objects.create(**empresaData)
         return userInstance
 
     def to_representation(self,obj):
         user = Usuario.objects.get(id=obj.id)
-        empresa = Empresa.objects.get(user=obj.id)
+        empresa = Empresa.objects.get(Empresa_id=obj.Empresa_id)
         return {
             'id':user.id,
-            'username':user.username,
-            'name':user.name,
-            'email':user.email,
+            'username':user.Username,
+            'name':user.Name,
+            'email':user.Email,
             'empresa':{
-                'id':empresa.id,
-                'nombreEmpresa':empresa.NombreEmpresa,
+                'Empresa_id':empresa.Empresa_id,
+                'NombreEmpresa':empresa.NombreEmpresa,
                 'NIT':empresa.NIT,
             }
         }
