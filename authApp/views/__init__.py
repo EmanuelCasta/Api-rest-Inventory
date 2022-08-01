@@ -5,3 +5,5 @@ from .ProveedorCreateView import ProveedorCreateView
 from .ProveedorDetailView import ProveedorDetailView
 from .EmpresaCreateView import EmpresaCreateView
 from .EmpresaDetailView import EmpresaDetailView
+from .UsuarioCreateView import UsuarioCreateView
+from .UsuarioDetailView import UsuarioDetailView
