@@ -26,11 +26,12 @@ class UserManager(BaseUserManager):
         return user
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
-    cedula = models.IntegerField(primary_key=True)
+    idUsuario = models.IntegerField(primary_key=True)
     username = models.CharField('Username', max_length = 15, unique=True)
     password = models.CharField('Password', max_length = 256)
     name = models.CharField('Name', max_length = 30)
     email = models.EmailField('Email', max_length = 100)
+    cedula = models.CharField('Cedula', max_length = 20)
 
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
@@ -38,4 +39,4 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         super().save(**kwargs)
 
     objects = UserManager()
-    USERNAME_FIELD = 'username'  
+    USERNAME_FIELD = 'username'
