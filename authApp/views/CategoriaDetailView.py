@@ -5,7 +5,7 @@ from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
 from authApp.models.Categoria import Categoria
-from authApp.serializers.CategoriaSerializer import CategoriaSerializer
+from authApp.serializers.categoriaSerializer import CategoriaSerializer
 
 class CategoriaDetailView(generics.RetrieveAPIView):
     queryset = Categoria.objects.all()

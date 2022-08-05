@@ -7,3 +7,5 @@ from .EmpresaCreateView import EmpresaCreateView
 from .EmpresaDetailView import EmpresaDetailView
 from .UsuarioCreateView import UsuarioCreateView
 from .UsuarioDetailView import UsuarioDetailView
+from .CategoriaCreateView import CategoriaCreateView
+from .CategoriaDetailView import CategoriaDetailView

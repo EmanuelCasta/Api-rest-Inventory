@@ -1,7 +1,7 @@
 from rest_framework import status, views
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from authApp.serializers.CategoriaSerializer import CategoriaSerializer
+from authApp.serializers.categoriaSerializer import CategoriaSerializer
 
 class CategoriaCreateView (views.APIView):
     
