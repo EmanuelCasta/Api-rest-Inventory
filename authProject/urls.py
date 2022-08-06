@@ -15,7 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from authApp.views.UsuarioCreateView import UsuarioCreateView
+from authApp.views.UsuarioDetailView import UsuarioDetailView
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
+from authApp import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('producto/',views.ProductoCreateView.as_view()),
+    path('producto/all/',views.ProductoAllView.as_view()),
+    path('producto/<int:pk>/',views.ProductoDetailView.as_view()),
+    path('proveedor/',views.ProveedorCreateView.as_view()),
+    path('proveedor/<int:pk>/',views.ProveedorDetailView.as_view()),
+    path('categoria/',views.CategoriaCreateView.as_view()),
+    path('categoria/<int:pk>/',views.CategoriaDetailView.as_view()),
+    path('login/',TokenObtainPairView.as_view()),
+    path('refresh/',TokenRefreshView.as_view()),
+    path('empresa/',views.EmpresaCreateView.as_view()),
+    path('empresa/<int:pk>/',views.EmpresaDetailView.as_view()),
+    path('usuario/',views.UsuarioCreateView.as_view()),
+    path('usuario/<int:pk>/',views.UsuarioDetailView.as_view()),
+
 ]

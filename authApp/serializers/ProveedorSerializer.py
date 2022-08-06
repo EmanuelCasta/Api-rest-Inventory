@@ -4,4 +4,4 @@ from rest_framework import serializers
 class ProveedorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Proveedor
-        fields = ["idProveedor","Descripcion","NombreProveedor"]
+        fields = ["Proveedor_id","Descripcion","NombreProveedor"]

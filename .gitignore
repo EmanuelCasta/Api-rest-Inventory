@@ -6,6 +6,8 @@
 # Node artifact files
 node_modules/
 dist/
+env/
+
 
 # Compiled Java class files
 *.class
@@ -40,6 +42,9 @@ Thumbs.db
 *.exe
 *.war
 
+# VScode workspace
+*.code-workspace
+
 # Large media files
 *.mp4
 *.tiff
@@ -48,3 +53,5 @@ Thumbs.db
 *.mov
 *.wmv
 
+# ignore env folder
+/env/
