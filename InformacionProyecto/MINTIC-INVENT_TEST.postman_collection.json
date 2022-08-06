@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "5b82652c-d0a6-473d-a5d2-c4a83ca69374",
+		"name": "MINTIC-INVENT_LOCAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14620967"
+	},
+	"item": [
+		{
+			"name": "New Empresa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"NombreEmpresa\":\"{{$randomCompanyName}}\",\n    \"NIT\":\"1234-3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURLRemote}}empresa/",
+					"host": [
+						"{{baseURLRemote}}empresa"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Username\": \"{{$randomUserName}}\",\n    \"password\":\"contraseña\",\n    \"Name\": \"{{$randomFullName}}\",\n    \"Email\": \"{{$randomExampleEmail}}\",\n    \"empresa\": {\n        \"Empresa_id\": 4,\n        \"NombreEmpresa\": \"{{$randomCompanyName}}\",\n        \"NIT\": \"{{$randomMACAddress}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}usuario/",
+					"host": [
+						"{{baseUrl}}usuario"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar info usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseURLRemote}}usuario/24",
+					"host": [
+						"{{baseURLRemote}}usuario"
+					],
+					"path": [
+						"24"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURLRemote",
+			"value": "https://inventario-g6-be.herokuapp.com/",
+			"type": "string"
+		},
+		{
+			"key": "baseUrlLocal",
+			"value": "http://127.0.0.1:8000/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5MzcyNTg1LCJpYXQiOjE2NTkzNzA3ODUsImp0aSI6IjUzNjc0NWRjYjVmZjQxMzA5MmQ4ZDU4YjNlMGFhOGFlIiwidXNlcl9pZCI6MjR9.Y8yOUH_cVqSjrDKqvT-mVUiH1AZe67Z0eKhsB02jGXU",
+			"type": "string"
+		}
+	]
+}

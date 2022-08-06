@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#* CORS ENABLE
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Application definition
 
@@ -40,10 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authApp',
+    'corsheaders',
 ]
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=180),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
@@ -61,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 # Simple JWT
@@ -93,10 +98,13 @@ TEMPLATES = [
         },
     },
 ]
-
+#*WSGI ENABLE
 WSGI_APPLICATION = 'authProject.wsgi.application'
 
-AUTH_USER_MODEL = "authApp.Usuario" 
+#* NEW AUTH MODEL
+AUTH_USER_MODEL = "authApp.Usuario"
+
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
