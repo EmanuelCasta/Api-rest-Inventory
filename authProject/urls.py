@@ -31,7 +31,7 @@ urlpatterns = [
     #Mostrar todas las empresas
     path('empresa/all/',views.EmpresaDetailView.as_view()),
     # Ingresar al sistema
-    path('login/',TokenObtainPairView.as_view()),
+    path('login/',views.UsuarioLoginView.as_view()),
     path('refresh/',TokenRefreshView.as_view()),
 
 
