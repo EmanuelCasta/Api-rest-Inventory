@@ -29,7 +29,7 @@ urlpatterns = [
     #Crear categoria
     #path('categoria/',views.CategoriaCreateView.as_view()),
     #Mostrar todas las empresas
-    #path('empresa/all/',views.EmpresaDetailView.as_view()),
+    path('empresa/all/',views.EmpresaDetailView.as_view()),
     # Ingresar al sistema
     path('login/',TokenObtainPairView.as_view()),
     path('refresh/',TokenRefreshView.as_view()),
