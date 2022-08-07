@@ -4,4 +4,6 @@ from rest_framework import serializers
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empresa
-        fields = ["idEmpresa_id","NombreEmpresa","NIT"]
+        fields = "__all__"
+
+    

@@ -21,18 +21,32 @@ from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshVie
 from authApp import views
 
 urlpatterns = [
-    path('producto/',views.ProductoCreateView.as_view()),
-    path('producto/all/',views.ProductoAllView.as_view()),
-    path('producto/<int:pk>/',views.ProductoDetailView.as_view()),
-    path('proveedor/',views.ProveedorCreateView.as_view()),
-    path('proveedor/<int:pk>/',views.ProveedorDetailView.as_view()),
-    path('categoria/',views.CategoriaCreateView.as_view()),
-    path('categoria/<int:pk>/',views.CategoriaDetailView.as_view()),
+
+    #Crear Usuario
+    path('usuario/',views.UsuarioCreateView.as_view()),
+    #Crear Proveedor
+    #path('proveedor/',views.ProveedorCreateView.as_view()),
+    #Crear categoria
+    #path('categoria/',views.CategoriaCreateView.as_view()),
+    #Mostrar todas las empresas
+    #path('empresa/all/',views.EmpresaDetailView.as_view()),
+    # Ingresar al sistema
     path('login/',TokenObtainPairView.as_view()),
     path('refresh/',TokenRefreshView.as_view()),
-    #path('empresa/',views.EmpresaCreateView.as_view()),
-    path('empresa/all/',views.EmpresaDetailView.as_view()),
-    path('usuario/',views.UsuarioCreateView.as_view()),
+
+
+    # =======Los que necesitan auth============ 
+    # pk es el id del Usuario 
+    # pkProducto es el id del producto
+    path('producto/<int:pk>/',views.ProductoCreateView.as_view()),
+    path('producto/all/<int:pk>/',views.ProductoAllView.as_view()),
+    path('producto/<int:pk>&<int:pkProducto>/',views.ProductoDetailView.as_view()),
+    #path('proveedor/<int:pk>/',views.ProveedorDetailView.as_view()),
+    #path('categoria/<int:pk>/',views.CategoriaDetailView.as_view()),
     path('usuario/<int:pk>/',views.UsuarioDetailView.as_view()),
+
+
+    #         """Administrador es el que asigna las empresas"""
+    #path('empresa/',views.EmpresaCreateView.as_view()),
 
 ]

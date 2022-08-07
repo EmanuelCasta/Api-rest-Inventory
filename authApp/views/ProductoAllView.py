@@ -13,16 +13,17 @@ class ProductoAllView(generics.RetrieveAPIView):
 
     #permisio
     #Cuando se cree el user 
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self,request,*args,**kwargs):
-        #token = request.META.get('HTTP_AUTHORIZATION')[7:]
-        #tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
-        #valid_data = tokenBackend.decode(token,verify=False)
-        #print(request.__dict__,"===================================================================================")
-        #if kwargs['pk'] != request['Producto_id'] :
-        #    stringResponse = {'detail':'error Request'}
-        #    return Response(stringResponse, status=status.HTTP_404_NOT_FOUND)
+        token = request.META.get('HTTP_AUTHORIZATION')[7:]
+        tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
+        valid_data = tokenBackend.decode(token,verify=False)
+
+       
+        if valid_data['user_id'] != kwargs['pk']:
+            stringResponse = {'detail':'Unauthorized Request'}
+            return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
         #producto = self.get_queryset(kwargs['pk'])
         
