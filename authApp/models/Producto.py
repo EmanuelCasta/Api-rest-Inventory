@@ -12,4 +12,4 @@ class Producto(models.Model):
     cantidad= models.IntegerField(default=0)
     Proveedor=   models.ForeignKey(Proveedor, related_name='proveedor', on_delete=models.CASCADE)
     Categoria=   models.ForeignKey(Categoria, related_name='categoria', on_delete=models.CASCADE)
-    Empresa=   models.ForeignKey(Empresa, related_name='empresa', on_delete=models.CASCADE)
+    idEmpresa=   models.ForeignKey(Empresa, related_name='empresa', on_delete=models.CASCADE)

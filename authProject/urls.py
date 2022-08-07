@@ -30,8 +30,8 @@ urlpatterns = [
     path('categoria/<int:pk>/',views.CategoriaDetailView.as_view()),
     path('login/',TokenObtainPairView.as_view()),
     path('refresh/',TokenRefreshView.as_view()),
-    path('empresa/',views.EmpresaCreateView.as_view()),
-    path('empresa/<int:pk>/',views.EmpresaDetailView.as_view()),
+    #path('empresa/',views.EmpresaCreateView.as_view()),
+    path('empresa/all/',views.EmpresaDetailView.as_view()),
     path('usuario/',views.UsuarioCreateView.as_view()),
     path('usuario/<int:pk>/',views.UsuarioDetailView.as_view()),
 

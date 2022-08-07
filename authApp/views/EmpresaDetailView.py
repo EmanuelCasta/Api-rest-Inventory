@@ -8,15 +8,14 @@ from authApp.models.Empresa import Empresa
 from authApp.serializers.EmpresaSerializer import EmpresaSerializer
 
 class EmpresaDetailView(generics.RetrieveAPIView):
-    queryset = Empresa.objects.all()
+    queryset = Empresa.objects.all
     serializers_class = EmpresaSerializer
-    permission_classes = (IsAuthenticated,)
+   
 
     def get(self, request, *args, **kwargs):
-        token = request.META.get('HTTP_AUTHORIZATION')[7:]
-        tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
-        valid_data = tokenBackend.decode(token,verified=False)
-        if valid_data['user_id'] == kwargs['pk']:
-                stringResponse = {'detail':'Unauthorized Request'}
-                return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
-        return super().get(request,*args,**kwargs)
+
+        empresa = self.queryset()
+        if empresa:
+            empresa_serializer=self.serializer_class(empresa)
+            return Response(empresa_serializer.data,status=status.HTTP_200_OK)
+        return Response(empresa_serializer.data,status=status.HTTP_409_CONFLICT)

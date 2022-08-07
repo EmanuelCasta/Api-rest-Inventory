@@ -5,20 +5,22 @@ from authApp.serializers.EmpresaSerializer import EmpresaSerializer
 
 
 class UsuarioSerializer(serializers.ModelSerializer):
-    empresa = EmpresaSerializer()
+    empresa = EmpresaSerializer(read_only=True)
+    Empresa_id=  serializers.IntegerField()
     class Meta:
         model = Usuario
-        fields = ['id','Username','password','Name','Email','empresa']
+        fields = ['id','Username','password','Name','Email','empresa',"Empresa_id"]
 
     def create(self, validated_data):
-        empresaData = validated_data.pop('empresa')
         userInstance = Usuario.objects.create(**validated_data)
-        Empresa.objects.create(**empresaData)
+        #Empresa.objects.create(**empresaData)
         return userInstance
 
     def to_representation(self,obj):
         user = Usuario.objects.get(id=obj.id)
-        empresa = Empresa.objects.get(Empresa_id=obj.Empresa_id)
+        #print(user.Empresa_id)
+        #print("===============================================================================================================================")
+        empresa =Empresa.objects.get(Empresa_id=obj.Empresa_id)
         return {
             'id':user.id,
             'username':user.Username,

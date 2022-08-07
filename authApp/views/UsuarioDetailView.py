@@ -18,8 +18,16 @@ class UsuarioDetailView(generics.RetrieveAPIView):
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         valid_data = tokenBackend.decode(token,verify=False)
 
+       
         if valid_data['user_id'] != kwargs['pk']:
             stringResponse = {'detail':'Unauthorized Request'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
-        return super().get(request,*args,**kwargs)
+        if kwargs['pk'] is not None:
+            userSearch = Usuario.objects.filter(id = kwargs['pk']).first()
+            if userSearch:
+                userSerializer = self.serializer_class(userSearch)
+                return Response(userSerializer.data,status=status.HTTP_200_OK)
+
+
+   
