@@ -3,7 +3,7 @@ from urllib import request
 from rest_framework import status,views
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
+from authApp.models.usuario import Usuario
 from authApp.serializers.UsuarioSerializer import UsuarioSerializer
 
 class UsuarioCreateView(views.APIView):
@@ -16,5 +16,8 @@ class UsuarioCreateView(views.APIView):
                      "password":request.data["password"]}
         tokenSerializer = TokenObtainPairSerializer(data=tokenData)
         tokenSerializer.is_valid(raise_exception=True)
+        
+        user = Usuario.objects.filter(Username = request.data["Username"]).first()
+        user_serializer = UsuarioSerializer(user)
 
-        return Response(tokenSerializer.validated_data, status=status.HTTP_201_CREATED)
+        return Response({"Security":tokenSerializer.validated_data,"Info_user":user_serializer.data}, status=status.HTTP_201_CREATED)
