@@ -110,12 +110,7 @@ AUTH_USER_MODEL = "authApp.Usuario"
 
 DATABASES = {
     'default': {
-	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-	    'NAME': 'd83ntmndh5jr1l',
-	    'USER': 'agmipoqchkneos',
-	    'PASSWORD': 'c58d853fcf56ce60a0c1bf19522d8e107ab8f842e50a20b617a19318fd667f55',
-	    'HOST': 'ec2-54-152-28-9.compute-1.amazonaws.com',
-	    'PORT': '5432',
+	   
 }
 }
 
